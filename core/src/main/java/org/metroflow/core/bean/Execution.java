@@ -1,6 +1,7 @@
 package org.metroflow.core.bean;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.metroflow.commons.utils.enums.ExecutionStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Map;
  * Created by zoupeng on 16/7/5.
  */
 public class Execution {
-    private Integer id;
+    private String id;
     //是否激活
     private Integer active = 1;
     private Execution parent;
@@ -20,13 +21,14 @@ public class Execution {
     private String processDefinitionKey;
     private Activity activity;
     private Transition transition;
+    private ExecutionStatus status;
     private Map<String,Pair<Object,Boolean>> variables = new HashMap<>();
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -108,5 +110,13 @@ public class Execution {
 
     public void setVariables(Map<String, Pair<Object, Boolean>> variables) {
         this.variables = variables;
+    }
+
+    public ExecutionStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ExecutionStatus status) {
+        this.status = status;
     }
 }
